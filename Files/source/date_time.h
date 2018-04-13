@@ -36,7 +36,6 @@ class DateTime
 public:
 	DateTime(unsigned day, unsigned month, unsigned int year, unsigned hour, unsigned minute);
 	bool operator<(const DateTime &obj) const;
-	//bool operator>(const DateTime &obj) const;
 	friend std::ostream &operator<<(std::ostream &os, const DateTime &obj);
 
 	//Exception class

@@ -44,7 +44,7 @@ int get_trucks_count(const std::vector<Data> &vec);
 
 void write_to_file(std::vector<std::vector<Data> > &vec);
 
-void sort(std::vector<Data> &vec);
+//void sort(std::vector<Data> &vec);
 
 int main()
 {
@@ -204,7 +204,7 @@ void write_to_file(std::vector<std::vector<Data> > &vec)
 	for (unsigned i(0); i < vec.size(); ++i)
 	{
 		//sort(vec[i]);
-		std::sort(vec[i].begin(), vec[i].end(), [](const Data &obj1, const Data &obj2) {return obj1.m_time < obj2.m_time; });
+		std::sort(vec[i].begin(), vec[i].end());
 		output.open("outputs/truck" + std::to_string(i + 1)+".txt");
 		float weight(0.f);
 		for (unsigned j(0); j < vec[i].size(); ++j)
@@ -213,6 +213,7 @@ void write_to_file(std::vector<std::vector<Data> > &vec)
 			weight += vec[i][j].m_weight;
 		}
 		output << weight;
+		weight = 0;
 		output.close();
 	}
 }

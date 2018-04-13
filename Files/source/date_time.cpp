@@ -68,15 +68,26 @@ bool DateTime::operator<(const DateTime &obj) const
 	arrThis[3] = m_hour;	arrObj[3] = obj.m_hour;
 	arrThis[4] = m_minute;	arrObj[4] = obj.m_minute;
 
-	bool was_greater(false);
+	__int8 arr[s_membersCount];
+	memset(arr, 0, s_membersCount * sizeof(__int8));
 
 	for (int i(0); i < s_membersCount; ++i)
 	{
-		if(arrThis[i]>arrObj[i])
-
+		if (arrThis[i] < arrObj[i])
+			arr[i] = 1;
+		else if (arrThis[i] == arrObj[i])
+			arr[i] = 0;
+		else arr[i] = -1;
 	}
 
-	return true;
+	for (int i(0); i < s_membersCount; ++i)
+	{
+		if (arr[i] != 0)
+		{
+			if (arr[i] == 1) return true;
+			else return false;
+		}
+	}
 }
 
 /*bool DateTime::operator>(const DateTime &obj) const
