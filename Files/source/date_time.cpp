@@ -68,47 +68,14 @@ bool DateTime::operator<(const DateTime &obj) const
 	arrThis[3] = m_hour;	arrObj[3] = obj.m_hour;
 	arrThis[4] = m_minute;	arrObj[4] = obj.m_minute;
 
-	__int8 arr[s_membersCount];
-	memset(arr, 0, s_membersCount * sizeof(__int8));
-
 	for (int i(0); i < s_membersCount; ++i)
 	{
 		if (arrThis[i] < arrObj[i])
-			arr[i] = 1;
-		else if (arrThis[i] == arrObj[i])
-			arr[i] = 0;
-		else arr[i] = -1;
-	}
-
-	for (int i(0); i < s_membersCount; ++i)
-	{
-		if (arr[i] != 0)
-		{
-			if (arr[i] == 1) return true;
-			else return false;
-		}
-	}
-}
-
-/*bool DateTime::operator>(const DateTime &obj) const
-{
-	int arrThis[s_membersCount], arrObj[s_membersCount];
-
-	arrThis[0] = m_year;	arrObj[0] = obj.m_year;
-	arrThis[1] = m_month;	arrObj[1] = obj.m_month;
-	arrThis[2] = m_day;		arrObj[2] = obj.m_day;
-	arrThis[3] = m_hour;	arrObj[3] = obj.m_hour;
-	arrThis[4] = m_minute;	arrObj[4] = obj.m_minute;
-
-	for (int i(0); i < s_membersCount; ++i)
-	{
-		if (arrThis[i] < arrObj[i])
+			return true;
+		else if (arrThis[i] > arrObj[i])
 			return false;
 	}
-
-	return true;
-}*/
-
+}
 std::ostream &operator<<(std::ostream &os, const DateTime &obj)
 {
 	os << obj.m_day << '.' << obj.m_month << '.' << obj.m_year << ' ' << obj.m_hour << ':' << obj.m_minute;
