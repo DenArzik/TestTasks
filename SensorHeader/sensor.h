@@ -11,7 +11,7 @@ public:
 	//and not to call set methods for each field
 	//virtuality will give the possibility to overload it
 	//and change the behavior in derived classes
-	virtual void reInitialize(double sensivity, double acceptableFilling) = 0;
+	virtual void reInitialize(double sensivity, double acceptableFilling, long long timeGap = 0) = 0;
 
 	//Main scan function
 	//it is expected, that it will be called in some kind of endless loop
